@@ -1,7 +1,7 @@
 particlesJS('particles-js', {
     "particles": {
       "number": {
-        "value": 100, // Number of particles
+        "value": 65, // Number of particles
         "density": {
           "enable": true,
           "value_area": 800 // Area density
@@ -41,7 +41,7 @@ particlesJS('particles-js', {
         },
         "onclick": {
           "enable": true,
-          "mode": "push" // Effect on click
+          "mode": "repulse" // Effect on click
         }
       }
     },
@@ -51,3 +51,4 @@ particlesJS('particles-js', {
     console.log('Particles.js config loaded');
 });
   
+

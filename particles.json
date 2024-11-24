@@ -29,7 +29,7 @@
       },
       "move": {
         "enable": true,
-        "speed": 1
+        "speed": 0.55
       }
     },
     "interactivity": {

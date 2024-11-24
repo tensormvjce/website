@@ -5,13 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tensor MVJCE</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Particle container -->
     <div id="particles-js"></div>
 
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="app.js"></script>
+<!-- headbar container -->
+    <div class="container">
+        <div class="logo">
+          <img src="images/logo_white.png" alt="Tensor Logo" class="logo-image">
+          <div class="panel panel-left">Home</div>
+          <div class="panel panel-left">Teams</div>
+          <div class="panel panel-left">Blogs</div>
+          <div class="panel panel-right">Updates</div>
+          <div class="panel panel-right">Projects</div>
+          <div class="panel panel-right">Recruitment</div>
+        </div>
+      </div>
+
+        <!-- JavaScript -->
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="app.js"></script>
+        <script src="script.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const logoElement = document.querySelector(".logo");
+        
+                // Add hover event listener to the logo
+                logoElement.addEventListener("mouseenter", function() {
+                    // Add the 'opened' class to keep panels visible after the first hover
+                    logoElement.classList.add("opened");
+                });
+            });
+        </script>
+        
 </body>
 </html>
+
