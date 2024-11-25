@@ -14,14 +14,12 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
-        /* Reset default margin, padding, and box-sizing */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Particle background styling */
         #particles-js {
             position: absolute;
             top: 0;
@@ -31,12 +29,10 @@
             z-index: -1; /* Keep the particles behind other content */
         }
 
-        /* Apply Montserrat font to the header elements */
         .main, .left, .right {
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* Styling for main divs */
         .main {
             padding: 10px 20px;
             color: white;
@@ -44,10 +40,9 @@
             display: block;
         }
 
-        /* Left section with gradient background and row layout */
         .left {
             display: flex;
-            flex-direction: row;  /* Set to row layout */
+            flex-direction: row; 
             justify-content: center;
             align-items: center;
             gap: 10px;
@@ -60,15 +55,14 @@
             -webkit-backdrop-filter: blur(8.8px);
             border: 1px solid rgba(110, 106, 106, 0.85);
             opacity: 0; /* Initially hidden */
-            pointer-events: none; /* Disable interaction when hidden */
-            transform: scale(0.5); /* Initially scaled down */
-            transition: opacity 1s ease, transform 1s ease, box-shadow 0.5s ease; /* Smooth transition */
+            pointer-events: none; 
+            transform: scale(0.5); 
+            transition: opacity 1s ease, transform 1s ease, box-shadow 0.5s ease; 
         }
 
-        /* Right section with gradient background and row layout */
         .right {
             display: flex;
-            flex-direction: row;  /* Set to row layout */
+            flex-direction: row;  
             justify-content: center;
             align-items: center;
             gap: 10px;
@@ -81,21 +75,19 @@
             -webkit-backdrop-filter: blur(8.8px);
             border: 1px solid rgba(110, 106, 106, 0.85);
             opacity: 0; /* Initially hidden */
-            pointer-events: none; /* Disable interaction when hidden */
-            transform: scale(0.5); /* Initially scaled down */
-            transition: opacity 1s ease, transform 1s ease, box-shadow 0.5s ease; /* Smooth transition */
+            pointer-events: none; 
+            transform: scale(0.5); 
+            transition: opacity 1s ease, transform 1s ease, box-shadow 0.5s ease; 
         }
 
-        /* Container styling for header */
         .head {
             display: flex;
-            align-items: center;  /* Vertically align elements */
-            justify-content: flex-start; /* Align content to the left */
+            align-items: center; 
+            justify-content: flex-start; 
             margin-top: 10px;
             width: 80%;
         }
 
-        /* Container for the logo to enable hover effect */
         .logo {
             margin: 0 30px;
             display: flex;
@@ -104,13 +96,11 @@
             cursor: pointer;
         }
 
-        /* Image zoom effect on hover */
         .logo-image {
             width: 90px;
             transition: transform 0.8s ease;
         }
 
-        /* Zoomed-in effect for the logo */
         .zoomed {
             transform: scale(1.2);
         }
@@ -126,19 +116,16 @@
     <!-- Particle container -->
     <div id="particles-js"></div>
 <div class="headofhead"><div class="head">
-    <!-- Left section with gradient background and row alignment -->
     <div class="left" id="leftContainer">
         <div class="main">Home</div>
         <div class="main">Teams</div>
         <div class="main">Blogs</div>
     </div>
 
-    <!-- Logo with hover effect -->
     <div class="logo" id="logoImageContainer">
         <img src="images/logo_white.png" alt="Tensor Logo" id="logoImage" class="logo-image">
     </div>
 
-    <!-- Right section with gradient background and row alignment -->
     <div class="right" id="rightContainer">
         <div class="main">Updates</div>
         <div class="main">Projects</div>
@@ -148,7 +135,6 @@
 </div>
     
     <script>
-        // Initialize particles.js background
         particlesJS("particles-js", {
             particles: {
                 number: {
@@ -210,36 +196,30 @@
             }
         });
 
-        // Reference to left and right containers and logo image
         const leftContainer = document.getElementById('leftContainer');
         const rightContainer = document.getElementById('rightContainer');
         const logoImage = document.getElementById('logoImage');
         let hideTimer;
 
         function showDivs() {
-            // Clear any existing hide timer to reset 10-second countdown
             clearTimeout(hideTimer);
 
-            // Show left and right sections by changing opacity and scaling up
             leftContainer.style.opacity = 1;
             leftContainer.style.transform = 'scale(1)'; // Scale to original size
             rightContainer.style.opacity = 1;
             rightContainer.style.transform = 'scale(1)'; // Scale to original size
 
-            // Add zoom effect to the logo
             logoImage.classList.add('zoomed');
 
-            // Set timer to hide sections and remove zoom effect after 10 seconds
             hideTimer = setTimeout(() => {
                 leftContainer.style.opacity = 0;
                 leftContainer.style.transform = 'scale(0.5)'; // Scale down
                 rightContainer.style.opacity = 0;
                 rightContainer.style.transform = 'scale(0.5)'; // Scale down
                 logoImage.classList.remove('zoomed');
-            }, 10000); // 10 seconds in milliseconds
+            }, 5000);
         }
 
-        // Attach the hover event listener to the logo
         document.getElementById('logoImage').addEventListener('mouseover', showDivs);
     </script>
 
