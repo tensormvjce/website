@@ -9,40 +9,239 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo_white.ico">
+
+    <!-- Include Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <style>
+        /* Reset default margin, padding, and box-sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Particle background styling */
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Keep the particles behind other content */
+        }
+
+        /* Apply Montserrat font to the header elements */
+        .main, .left, .right {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Styling for main divs */
+        .main {
+            padding: 10px 20px;
+            color: white;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Left section with gradient background and row layout */
+        .left {
+            display: flex;
+            flex-direction: row;  /* Set to row layout */
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            padding: 10px;
+            background: rgba(110, 106, 106, 0.41);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8.8px);
+            -webkit-backdrop-filter: blur(8.8px);
+            border: 1px solid rgba(110, 106, 106, 0.85);
+            opacity: 0; /* Initially hidden */
+            pointer-events: none; /* Disable interaction when hidden */
+            transform: scale(0.5); /* Initially scaled down */
+            transition: opacity 1s ease, transform 1s ease, box-shadow 0.5s ease; /* Smooth transition */
+        }
+
+        /* Right section with gradient background and row layout */
+        .right {
+            display: flex;
+            flex-direction: row;  /* Set to row layout */
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            padding: 10px;
+            background: rgba(110, 106, 106, 0.41);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8.8px);
+            -webkit-backdrop-filter: blur(8.8px);
+            border: 1px solid rgba(110, 106, 106, 0.85);
+            opacity: 0; /* Initially hidden */
+            pointer-events: none; /* Disable interaction when hidden */
+            transform: scale(0.5); /* Initially scaled down */
+            transition: opacity 1s ease, transform 1s ease, box-shadow 0.5s ease; /* Smooth transition */
+        }
+
+        /* Container styling for header */
+        .head {
+            display: flex;
+            align-items: center;  /* Vertically align elements */
+            justify-content: flex-start; /* Align content to the left */
+            margin-top: 10px;
+            width: 80%;
+        }
+
+        /* Container for the logo to enable hover effect */
+        .logo {
+            margin: 0 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* Image zoom effect on hover */
+        .logo-image {
+            width: 90px;
+            transition: transform 0.8s ease;
+        }
+
+        /* Zoomed-in effect for the logo */
+        .zoomed {
+            transform: scale(1.2);
+        }
+        .headofhead{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
+
     <!-- Particle container -->
     <div id="particles-js"></div>
+<div class="headofhead"><div class="head">
+    <!-- Left section with gradient background and row alignment -->
+    <div class="left" id="leftContainer">
+        <div class="main">Home</div>
+        <div class="main">Teams</div>
+        <div class="main">Blogs</div>
+    </div>
 
-<!-- headbar container -->
-    <div class="container">
-        <div class="logo">
-          <img src="images/logo_white.png" alt="Tensor Logo" class="logo-image">
-          <div class="panel panel-left">Home</div>
-          <div class="panel panel-left">Teams</div>
-          <div class="panel panel-left">Blogs</div>
-          <div class="panel panel-right">Updates</div>
-          <div class="panel panel-right">Projects</div>
-          <div class="panel panel-right">Recruitment</div>
-        </div>
-      </div>
+    <!-- Logo with hover effect -->
+    <div class="logo" id="logoImageContainer">
+        <img src="images/logo_white.png" alt="Tensor Logo" id="logoImage" class="logo-image">
+    </div>
 
-        <!-- JavaScript -->
-        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-        <script src="app.js"></script>
-        <script src="script.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const logoElement = document.querySelector(".logo");
-        
-                // Add hover event listener to the logo
-                logoElement.addEventListener("mouseenter", function() {
-                    // Add the 'opened' class to keep panels visible after the first hover
-                    logoElement.classList.add("opened");
-                });
-            });
-        </script>
-        
+    <!-- Right section with gradient background and row alignment -->
+    <div class="right" id="rightContainer">
+        <div class="main">Updates</div>
+        <div class="main">Projects</div>
+        <div class="main">Recruitment</div>    
+    </div>
+</div>
+</div>
+    
+    <script>
+        // Initialize particles.js background
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#ffffff"
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false
+                    }
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    }
+                }
+            }
+        });
+
+        // Reference to left and right containers and logo image
+        const leftContainer = document.getElementById('leftContainer');
+        const rightContainer = document.getElementById('rightContainer');
+        const logoImage = document.getElementById('logoImage');
+        let hideTimer;
+
+        function showDivs() {
+            // Clear any existing hide timer to reset 10-second countdown
+            clearTimeout(hideTimer);
+
+            // Show left and right sections by changing opacity and scaling up
+            leftContainer.style.opacity = 1;
+            leftContainer.style.transform = 'scale(1)'; // Scale to original size
+            rightContainer.style.opacity = 1;
+            rightContainer.style.transform = 'scale(1)'; // Scale to original size
+
+            // Add zoom effect to the logo
+            logoImage.classList.add('zoomed');
+
+            // Set timer to hide sections and remove zoom effect after 10 seconds
+            hideTimer = setTimeout(() => {
+                leftContainer.style.opacity = 0;
+                leftContainer.style.transform = 'scale(0.5)'; // Scale down
+                rightContainer.style.opacity = 0;
+                rightContainer.style.transform = 'scale(0.5)'; // Scale down
+                logoImage.classList.remove('zoomed');
+            }, 10000); // 10 seconds in milliseconds
+        }
+
+        // Attach the hover event listener to the logo
+        document.getElementById('logoImage').addEventListener('mouseover', showDivs);
+    </script>
+
 </body>
 </html>
-
