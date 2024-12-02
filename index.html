@@ -1,278 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tensor MVJCE</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="images/logo_white.ico">
-
-
-    <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0N1Y6CR0B"></script>
-        <script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', 'G-F0N1Y6CR0B');
-        </script>
-
-    
-    <!-- Include Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2; /* Below glass overlay and other content */
-        }
-
-        /* Glass effect overlay */
-        .glass-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Below header content but above particles */
-            background: rgba(0, 0, 0, 0.41);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(1px);
-            -webkit-backdrop-filter: blur(0px);
-            border: 1px solid rgba(19, 18, 18, 0.85);
-        }
-
-        .main, .left, .right {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .main {
-            padding: 10px 20px;
-            color: white;
-            font-weight: bold;
-            display: block;
-        }
-
-        .left {
-            display: flex;
-            flex-direction: row; 
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            flex: 1;
-            padding: 10px;
-            background: rgba(110, 106, 106, 0.41);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(8.8px);
-            -webkit-backdrop-filter: blur(8.8px);
-            border: 1px solid rgba(110, 106, 106, 0.85);
-            opacity: 0; /* Initially hidden */
-            pointer-events: none; 
-            transform: scale(0.5); 
-            transition: opacity 1s ease, transform 1s ease, box-shadow 0.5s ease; 
-        }
-
-        .right {
-            display: flex;
-            flex-direction: row;  
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            flex: 1;
-            padding: 10px;
-            background: rgba(110, 106, 106, 0.41);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(8.8px);
-            -webkit-backdrop-filter: blur(8.8px);
-            border: 1px solid rgba(110, 106, 106, 0.85);
-            opacity: 0; /* Initially hidden */
-            pointer-events: none; 
-            transform: scale(0.5); 
-            transition: opacity 1s ease, transform 1s ease, box-shadow 0.5s ease; 
-        }
-
-        .head {
-            display: flex;
-            align-items: center; 
-            justify-content: flex-start; 
-            margin-top: 10px;
-            width: 80%;
-        }
-
-        .logo {
-            margin: 0 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .logo-image {
-            width: 90px;
-            transition: transform 0.8s ease;
-        }
-
-        .zoomed {
-            transform: scale(1.2);
-        }
-        .headofhead {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+    <title>Tensor portal</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-database.js"></script>
+    <link rel="icon" type="image/x-icon" href="logo_white.ico">
 </head>
+
 <body>
+    <canvas>
+        
+</canvas>
+<div class="container">
+    <h1 class="title"><img src="logo_white.png" class="logo" alt="">Tensor weekly posts</h1>
+    <form action="" id="slotBookingForm" class="form">
+        <div class="alert" style="display: none;">Your slot has been booked successfully!</div>
 
-    <!-- Particle container -->
-    <div id="particles-js"></div>
-    <div class="glass-overlay"></div> <!-- Glass effect overlay -->
+        <div class="inputBox">
+            <label for="userName">Name</label>
+            <input type="text" id="userName" placeholder="Enter your name" required />
+        </div>
 
-    <!-- Header and Navigation -->
-    <div class="headofhead">
-        <div class="head">
-            <div class="left" id="leftContainer">
-                <div class="main">Home</div>
-                <div class="main">Teams</div>
-                <div class="main">Blogs</div>
-            </div>
+        <div class="inputBox">
+            <label for="dateRangeSelect">Date Range</label>
+            <select id="dateRangeSelect" required>
+                <option value="" disabled selected>Select Date Range</option>
+                <!-- <option value="Nov23-Dec3">Nov 23 - Dec 3</option> -->
+                <option value="Dec4-Dec10">Dec 4 - Dec 10</option>
+                <option value="Dec11-Dec17">Dec 11 - Dec 17</option>
+            </select>
+        </div>
 
-            <div class="logo" id="logoImageContainer">
-                <img src="images/logo_white.png" alt="Tensor Logo" id="logoImage" class="logo-image">
-            </div>
+        <div class="inputBox">
+            <label for="daySelect">Day</label>
+            <select id="daySelect" required>
+                <option value="" disabled selected>Select Day</option>
+                <option value="Friday">Friday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+        </div>
 
-            <div class="right" id="rightContainer">
-                <div class="main">Updates</div>
-                <div class="main">Projects</div>
-                <div class="main">Recruitment</div>    
-            </div>
+        <div class="inputBox">
+            <label for="roleSelect">Role</label>
+            <select id="roleSelect" required>
+                <option value="" disabled selected>Select Role</option>
+                <option value="Content">Content</option>
+                <option value="Design">Design</option>
+            </select>
+        </div>
+        <div class="btn">
+            <div class="inputBox">
+            <button type="submit" class="submitBtn">Book Slot</button>
         </div>
     </div>
-    
-    <script>
-        particlesJS("particles-js", {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                shape: {
-                    type: "circle",
-                    stroke: {
-                        width: 0,
-                        color: "#ffffff"
-                    }
-                },
-                opacity: {
-                    value: 0.5,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: false
-                    }
-                },
-                move: {
-                    enable: true,
-                    speed: 1,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false,
-                    attract: {
-                        enable: false
-                    }
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: "repulse"
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: "push"
-                    }
-                },
-                modes: {
-                    repulse: {
-                        distance: 90  // Radius of repulsion on hover
-                    }
-                }
-            }
-        });
+        
+    </form>
 
-        const leftContainer = document.getElementById('leftContainer');
-        const rightContainer = document.getElementById('rightContainer');
-        const logoImage = document.getElementById('logoImage');
-        let hideTimer;
-
-        function showDivs() {
-            clearTimeout(hideTimer);
-
-            leftContainer.style.opacity = 1;
-            leftContainer.style.transform = 'scale(1)'; // Scale to original size
-            rightContainer.style.opacity = 1;
-            rightContainer.style.transform = 'scale(1)'; // Scale to original size
-
-            logoImage.classList.add('zoomed');
-
-            hideTimer = setTimeout(() => {
-                leftContainer.style.opacity = 0;
-                leftContainer.style.transform = 'scale(0.5)'; // Scale down
-                rightContainer.style.opacity = 0;
-                rightContainer.style.transform = 'scale(0.5)'; // Scale down
-                logoImage.classList.remove('zoomed');
-            }, 5000);
-        }
-
-        document.getElementById('logoImage').addEventListener('mouseover', showDivs);
-    </script>
-
-    <!-- CHATBOT -->
-    <div class="chatbot">
-                <script>
-                    window.embeddedChatbotConfig = {
-                        chatbotId: "uov2gh0KZ4C-AMpilbNCb",
-                        domain: "www.chatbase.co"
-                    }
-                </script>
-                <script src="https://www.chatbase.co/embed.min.js" chatbotId="uov2gh0KZ4C-AMpilbNCb" domain="www.chatbase.co" defer>
-                </script>
+    <!-- Slot availability display -->
+    <div id="slotAvailability">
+        <h2>Slot Availability</h2>
+        <div id="nov23Dec3Details">
+            <h3>Nov 25 - Dec 1</h3>
+            <ul id="nov23Dec3Slots"></ul>
+        </div>
+        <div id="dec4Dec10Details">
+            <h3>Dec 2 - Dec 8</h3>
+            <ul id="dec4Dec10Slots"></ul>
+        </div>
+        <div id="dec11Dec17Details">
+            <h3>Dec 9 - Dec 15</h3>
+            <ul id="dec11Dec17Slots"></ul>
+        </div>
     </div>
-
-
+</div>
     
+
+    <script src="./portal.js"></script>
+    <!-- <footer>
+        Tensor-MVJCE
+    </footer> -->
 </body>
-</html>
