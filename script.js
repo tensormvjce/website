@@ -24,48 +24,48 @@ VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
     glare: true, // Enables glare effect
     "max-glare": 0.5, // Max glare opacity (0.5 = 50%)
   });
+
+
   const textElement = document.getElementById("shuffling-text");
 
   // List of texts for the slideshow
-  const texts = ["Welcome!", "Hover Over Me", "Enjoy the Tilt!", "Let's Shuffle"];
+  const texts = ["WELCOME", "TENSOR-CLUB", "MVJCE", "THE AI CLUB"];
   let currentTextIndex = 0;
   
-  function shuffleText(element, text, duration = 2000, interval = 100) {
-    let shuffled = "";
+  function shuffleTextReveal(element, text, duration = 2000, interval = 100) {
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const iterations = Math.ceil(duration / interval);
-    let count = 0;
+    const textArray = text.split("");
+    let revealedIndex = 0;
   
     const intervalId = setInterval(() => {
-      // Generate random characters for each position
-      shuffled = text
-        .split("")
-        .map((char, i) =>
-          count >= iterations || Math.random() > 0.5 ? char : characters[Math.floor(Math.random() * characters.length)]
-        )
+      let displayText = textArray
+        .map((char, i) => {
+          if (i < revealedIndex) {
+            return char; // Fixed characters
+          }
+          return characters[Math.floor(Math.random() * characters.length)]; // Shuffled characters
+        })
         .join("");
   
-      // Update the element's text
-      element.textContent = shuffled;
+      element.textContent = displayText;
   
-      count++;
-      if (count >= iterations) {
+      if (revealedIndex < textArray.length) {
+        revealedIndex++; // Reveal the next character
+      } else {
         clearInterval(intervalId);
-        element.textContent = text; // Show the actual text
       }
     }, interval);
   }
   
   function startSlideshow() {
     setInterval(() => {
-      // Get the next text in the array
-      currentTextIndex = (currentTextIndex + 1) % texts.length;
-      shuffleText(textElement, texts[currentTextIndex]);
+      currentTextIndex = (currentTextIndex + 1) % texts.length; // Loop through texts
+      shuffleTextReveal(textElement, texts[currentTextIndex]);
     }, 4000); // Change text every 4 seconds
   }
   
-  // Start with the first text
-  shuffleText(textElement, texts[currentTextIndex]);
+  // Start the first text animation
+  shuffleTextReveal(textElement, texts[currentTextIndex]);
   // Start the slideshow
   startSlideshow();
-    
+  
