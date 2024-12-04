@@ -184,18 +184,13 @@
 .tilt-box {
   width: 500px;
   height: 300px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 1);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
   border-radius: 15px;
+  margin-top: 50px;
   text-align: center;
   overflow: hidden;
 }
@@ -209,5 +204,4 @@
 .mb{
   display: flex;
   justify-content: center;
-  align-items: center;
 }

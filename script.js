@@ -29,7 +29,7 @@ VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
   const textElement = document.getElementById("shuffling-text");
 
   // List of texts for the slideshow
-  const texts = ["WELCOME", "TENSOR-CLUB", "MVJCE", "THE AI CLUB"];
+  const texts = ["TENSOR-CLUB", "THE AI-ML CLUB"];
   let currentTextIndex = 0;
   
   function shuffleTextReveal(element, text, duration = 2000, interval = 100) {
