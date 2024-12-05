@@ -123,9 +123,13 @@
     transform: scale(1.2);
 }
 .headofhead {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;   /* Pin it to the top */
+  top: 0;            /* Align to the top edge */
+  width: 100%;       /* Full width */
+  z-index: 100;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .body{
   cursor: url('images/cursor.png') 16 16, auto;
