@@ -68,4 +68,3 @@ VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
   shuffleTextReveal(textElement, texts[currentTextIndex]);
   // Start the slideshow
   startSlideshow();
-  
