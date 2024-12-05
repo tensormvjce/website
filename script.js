@@ -22,7 +22,7 @@ VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
     max: 25, // Max tilt rotation (default is 20)
     speed: 400, // Animation speed (default is 300)
     glare: true, // Enables glare effect
-    "max-glare": 0.5, // Max glare opacity (0.5 = 50%)
+    "max-glare": 0.05, // Max glare opacity (0.5 = 50%)
   });
 
 
